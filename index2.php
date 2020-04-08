@@ -27,17 +27,34 @@ $posts = array();
 while($row = $result->fetch_assoc())
 	$posts[] = $row;
 
+
+// Tạo kết nối đến CSDL
+
+$conn1 = new mysqli($servername,$username,$password,$dbname);
+
 //Câu lệnh truy vấn
 $query1 = "SELECT * FROM posts ORDER BY created_at desc limit 6";
 
 //Thực hiện câu lệnh
-$result1 = $conn->query($query);
+$result1 = $conn1->query($query1);
 
 //Tạo mảng để chứa data
 $posts1 = array();
 
 while($row1 = $result1->fetch_assoc())
 	$posts1[] = $row1;
+
+//Câu lệnh truy vấn
+$query3 = "SELECT * FROM posts ORDER BY created_at desc limit 1";
+
+//Thực hiện câu lệnh
+$result3= $conn->query($query3);
+
+//Tạo mảng để chứa data
+$posts3= array();
+
+while($row3 = $result3->fetch_assoc())
+	$posts3[] = $row3;
 
 //In kết quả
 /*foreach($posts as $post)
@@ -259,40 +276,41 @@ while($row1 = $result1->fetch_assoc())
 						<div class="row">
 							<!-- post -->
 							<?php
-						foreach($posts1 as $post1)
+						foreach($posts3 as $post3)
 						{
 							//print_r($post);
 							?>
 							<div class="col-md-12">
 								<div class="post post-thumb">
-									<a class="post-img" href="blog-post.html"><img src="<?php echo $post1['thumbnail']; ?>" alt=""></a>
+									<a class="post-img" href="blog-post.html"><img src="<?php echo $post3['thumbnail']; ?>" alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
 											<a class="post-category cat-3" href="category.html">Jquery</a>
-											<span class="post-date"><?php echo $post1['created_at']; ?></span>
+											<span class="post-date"><?php echo $post3['created_at']; ?></span>
 										</div>
-										<h3 class="post-title"><a href="blog-post.html"><?php echo $post1['title'] ;?></a></h3>
+										<h3 class="post-title"><a href="blog-post.html"><?php echo $post3['title'] ;?></a></h3>
 									</div>
 								</div>
 							</div>
 							<!-- /post -->
 							<?php }?>
+
+							<?php
+								foreach($posts1 as $post1)
+								{
+								//print_r($post);
+							?>
 							<!-- post -->
 
-								<?php
-						foreach($posts1 as $post1)
-						{
-							//print_r($post);
-							?>
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="post">
 									<a class="post-img" href="blog-post.html"><img src="<?php echo $post1['thumbnail']; ?>" alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
 											<a class="post-category cat-4" href="category.html">Css</a>
-											<span class="post-date"><?php echo $post1['created_at']; ?></span>
+											<span class="post-date"><?php echo $post1['created_at'];?></span>
 										</div>
-										<h3 class="post-title"><a href="blog-post.html"><?php echo $post1['title'] ;?></a></h3>
+										<h3 class="post-title"><a href="blog-post.html"><?php echo $post1['title'];?></a></h3>
 									</div>
 								</div>
 							</div>
