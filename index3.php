@@ -1,5 +1,4 @@
 <?php
-
 //Thông số kết nối Database
 
 $servername = "localhost"; //Địa chỉ IP của máy chủ chứa Database
