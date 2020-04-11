@@ -188,6 +188,11 @@ while($row5 = $result5->fetch_assoc())
 				<div class="row">
 					<div class="col-md-8">
 						<div class="row">
+								<?php
+						foreach($posts4 as $post4)
+						{
+							//print_r($post);
+						?>
 							<!-- post -->
 							<div class="col-md-12">
 								<div class="post post-thumb">
@@ -202,7 +207,8 @@ while($row5 = $result5->fetch_assoc())
 								</div>
 							</div>
 							<!-- /post -->
-										
+							<?php } ?>	
+
 							<!-- post -->
 							<div class="col-md-6">
 								<div class="post">
